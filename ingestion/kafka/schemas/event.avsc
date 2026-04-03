@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "event",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "event_name", "type": "string"},
+    {"name": "customer_id", "type": "string"},
+    {"name": "device_id", "type": "string"},
+    {"name": "event_ts", "type": "string"}
+  ]
+}
+

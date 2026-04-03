@@ -1,0 +1,7 @@
+{
+  "expectations": [
+    {"expectation_type": "not_null", "kwargs": {"column": "event_date"}},
+    {"expectation_type": "non_negative", "kwargs": {"column": "gross_amount"}}
+  ]
+}
+

@@ -1,0 +1,2 @@
+"""Core medallion lakehouse logic."""
+

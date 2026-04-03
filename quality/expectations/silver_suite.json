@@ -1,0 +1,9 @@
+{
+  "expectations": [
+    {"expectation_type": "not_null", "kwargs": {"column": "transaction_id"}},
+    {"expectation_type": "not_null", "kwargs": {"column": "customer_id"}},
+    {"expectation_type": "unique", "kwargs": {"column": "transaction_id"}},
+    {"expectation_type": "accepted_values", "kwargs": {"column": "status", "values": ["approved", "declined", "chargeback", "unknown"]}}
+  ]
+}
+

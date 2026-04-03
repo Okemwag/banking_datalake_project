@@ -1,0 +1,7 @@
+{
+  "expectations": [
+    {"expectation_type": "not_null", "kwargs": {"column": "run_id"}},
+    {"expectation_type": "not_null", "kwargs": {"column": "bronze_ingest_date"}}
+  ]
+}
+

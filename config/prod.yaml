@@ -1,0 +1,9 @@
+environment: prod
+storage:
+  endpoint: https://s3.amazonaws.com
+  path_style: false
+orchestration:
+  bronze_schedule: "*/5 * * * *"
+  silver_schedule: "15 * * * *"
+  gold_schedule: "0 0 * * *"
+

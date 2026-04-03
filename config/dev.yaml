@@ -1,0 +1,9 @@
+environment: dev
+storage:
+  endpoint: http://minio:9000
+  path_style: true
+orchestration:
+  bronze_schedule: "*/15 * * * *"
+  silver_schedule: "5 * * * *"
+  gold_schedule: "0 2 * * *"
+

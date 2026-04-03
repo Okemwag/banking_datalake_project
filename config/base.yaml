@@ -1,0 +1,26 @@
+project_name: banking-lakehouse
+environment: dev
+storage:
+  bucket: lakehouse
+  raw_prefix: raw
+  bronze_prefix: bronze
+  silver_prefix: silver
+  gold_prefix: gold
+  bad_prefix: _bad
+  warehouse_prefix: warehouse
+spark:
+  master: local[*]
+  timezone: UTC
+  shuffle_partitions: 8
+  delta_log_retention_days: 30
+quality:
+  late_arrival_watermark_days: 45
+  duplicate_key: transaction_id
+  quarantine_reason_column: quarantine_reason
+optimization:
+  vacuum_retention_hours: 168
+  gold_lookback_days: 60
+  zorder_columns:
+    - customer_id
+    - event_date
+

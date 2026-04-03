@@ -1,0 +1,9 @@
+environment: staging
+storage:
+  endpoint: https://s3.amazonaws.com
+  path_style: false
+orchestration:
+  bronze_schedule: "*/10 * * * *"
+  silver_schedule: "0 * * * *"
+  gold_schedule: "0 1 * * *"
+
