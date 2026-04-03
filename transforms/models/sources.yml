@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: transactions
+      - name: customers
+      - name: events
+  - name: silver
+    schema: silver
+    tables:
+      - name: transactions_clean
+  - name: gold
+    schema: gold
+    tables:
+      - name: daily_customer_metrics
+      - name: account_risk_metrics
+
+models:
+  - name: stg_transactions
+    columns:
+      - name: transaction_id
+        tests: [not_null]
+      - name: customer_id
+        tests: [not_null]
+  - name: fct_daily_revenue
+    columns:
+      - name: revenue_date
+        tests: [not_null]
+

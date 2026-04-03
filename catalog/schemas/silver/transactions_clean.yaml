@@ -1,0 +1,14 @@
+dataset: silver.transactions_clean
+owner: platform-data
+description: Canonical typed transaction records after Silver standardization.
+columns:
+  - name: transaction_id
+    type: string
+    classification: FINANCIAL
+  - name: event_ts_utc
+    type: timestamp
+    classification: OPERATIONAL
+  - name: is_late_arrival
+    type: boolean
+    classification: OPERATIONAL
+

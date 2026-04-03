@@ -1,0 +1,10 @@
+tags:
+  PII:
+    description: Personally identifiable information.
+  SENSITIVE:
+    description: Data with elevated access restrictions.
+  FINANCIAL:
+    description: Monetary and account-related data.
+  OPERATIONAL:
+    description: Non-sensitive telemetry and workflow metadata.
+

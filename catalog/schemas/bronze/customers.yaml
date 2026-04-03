@@ -1,0 +1,14 @@
+dataset: bronze.customers
+owner: customer-domain
+description: Raw customer profiles from operational systems.
+columns:
+  - name: customer_id
+    type: string
+    classification: PII
+  - name: full_name
+    type: string
+    classification: PII
+  - name: email
+    type: string
+    classification: PII
+

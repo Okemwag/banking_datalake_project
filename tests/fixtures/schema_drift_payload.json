@@ -1,0 +1,9 @@
+{
+  "transaction_id": "txn_999",
+  "customer_id": "cust_999",
+  "account_id": "acct_999",
+  "amount": "430.12",
+  "merchant_region": "east-africa",
+  "risk_model_version": "v2"
+}
+

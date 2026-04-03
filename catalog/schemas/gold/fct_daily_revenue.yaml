@@ -1,0 +1,11 @@
+dataset: gold.fct_daily_revenue
+owner: finance-analytics
+description: Daily finance mart for revenue trend analysis.
+columns:
+  - name: revenue_date
+    type: date
+    classification: OPERATIONAL
+  - name: gross_revenue
+    type: decimal(18,2)
+    classification: FINANCIAL
+

@@ -1,0 +1,20 @@
+dataset: bronze.transactions
+owner: platform-data
+description: Raw transaction events landed from batch files and Kafka consumers.
+columns:
+  - name: transaction_id
+    type: string
+    classification: FINANCIAL
+  - name: customer_id
+    type: string
+    classification: PII
+  - name: account_id
+    type: string
+    classification: FINANCIAL
+  - name: amount
+    type: string
+    classification: FINANCIAL
+  - name: event_ts
+    type: string
+    classification: OPERATIONAL
+

@@ -1,0 +1,9 @@
+{
+  "records": [
+    {
+      "_corrupt_record": "{\"transaction_id\":\"txn_bad\",",
+      "reason": "truncated_json"
+    }
+  ]
+}
+

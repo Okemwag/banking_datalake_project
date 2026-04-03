@@ -9,7 +9,13 @@ from ingestion.kafka.consumers.base_consumer import BaseConsumer
 from lakehouse.runtime import load_settings
 
 
-def consume_topic_to_raw(topic: str, group_id: str = "bronze-writer", max_records: int = 500) -> str | None:
+def consume_topic_to_raw(
+    topic: str,
+    group_id: str = "bronze-writer",
+    max_records: int = 500,
+    run_id: str | None = None,
+    run_date: str | None = None,
+) -> str | None:
     settings = load_settings()
     consumer = BaseConsumer(topic=topic, group_id=group_id)
     records = consumer.poll(max_records=max_records)
@@ -17,8 +23,9 @@ def consume_topic_to_raw(topic: str, group_id: str = "bronze-writer", max_record
         return None
 
     now = datetime.now(UTC)
-    run_id = now.strftime("%Y%m%d%H%M%S")
-    key = f"{settings.raw_prefix}/{topic}/ingest_date={now:%Y-%m-%d}/run_id={run_id}/events.json"
+    effective_run_id = run_id or now.strftime("%Y%m%d%H%M%S")
+    effective_run_date = run_date or f"{now:%Y-%m-%d}"
+    key = f"{settings.raw_prefix}/{topic}/ingest_date={effective_run_date}/run_id={effective_run_id}/events.json"
     body = "\n".join(json.dumps(record) for record in records)
 
     client = boto3.client(
@@ -29,4 +36,3 @@ def consume_topic_to_raw(topic: str, group_id: str = "bronze-writer", max_record
     )
     client.put_object(Bucket=settings.bucket, Key=key, Body=body.encode("utf-8"))
     return key
-

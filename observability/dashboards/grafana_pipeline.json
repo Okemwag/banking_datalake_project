@@ -1,0 +1,9 @@
+{
+  "title": "Pipeline Health",
+  "panels": [
+    {"title": "Rows Processed", "type": "timeseries"},
+    {"title": "Quarantine Rate", "type": "timeseries"},
+    {"title": "Late Arrival Volume", "type": "timeseries"}
+  ]
+}
+

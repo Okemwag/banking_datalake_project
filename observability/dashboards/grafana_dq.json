@@ -1,0 +1,8 @@
+{
+  "title": "Data Quality Trends",
+  "panels": [
+    {"title": "DQ Pass Rate", "type": "timeseries"},
+    {"title": "Null Ratio by Key Column", "type": "timeseries"}
+  ]
+}
+

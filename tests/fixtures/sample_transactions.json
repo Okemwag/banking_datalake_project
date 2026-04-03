@@ -1,0 +1,12 @@
+[
+  {
+    "transaction_id": "txn_001",
+    "customer_id": "cust_1001",
+    "account_id": "acct_2001",
+    "amount": "125.80",
+    "currency": "USD",
+    "merchant_category": "retail",
+    "event_ts": "2026-01-01T10:30:00Z"
+  }
+]
+
