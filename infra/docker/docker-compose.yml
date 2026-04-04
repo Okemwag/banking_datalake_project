@@ -81,7 +81,7 @@ services:
         -Djavax.jdo.option.ConnectionPassword=${POSTGRES_PASSWORD:-postgres}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-minio}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-minio123}
-      S3_ENDPOINT: ${S3_ENDPOINT:-http://minio:9000}
+      S3_ENDPOINT_URL: ${S3_ENDPOINT:-http://minio:9000}
       S3_PATH_STYLE_ACCESS: ${S3_PATH_STYLE:-true}
     ports:
       - "9083:9083"
