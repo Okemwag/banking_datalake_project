@@ -1,0 +1,5 @@
+# Install dbt in a dedicated virtualenv so it does not have to satisfy
+# Airflow's global constraints file.
+dbt-core==1.8.8
+dbt-adapters==1.7.0
+dbt-trino==1.8.5

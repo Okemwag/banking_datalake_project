@@ -13,6 +13,12 @@ from pyspark.sql import DataFrame, SparkSession
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SPARK_PACKAGE_COORDS = ",".join(
+    [
+        "org.apache.hadoop:hadoop-aws:3.3.4",
+        "com.amazonaws:aws-java-sdk-bundle:1.12.262",
+    ]
+)
 
 
 def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
@@ -141,11 +147,18 @@ def build_spark_session(app_name: str) -> SparkSession:
         .config("spark.hadoop.fs.s3a.secret.key", settings.aws_secret_access_key)
         .config("spark.hadoop.fs.s3a.path.style.access", str(settings.s3_path_style).lower())
         .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
+        .config(
+            "spark.hadoop.fs.s3a.aws.credentials.provider",
+            "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider",
+        )
         .config("spark.hadoop.fs.s3a.connection.ssl.enabled", "false")
-        .config("hive.metastore.uris", settings.hive_metastore_uri)
+        .config("spark.hadoop.hive.metastore.uris", settings.hive_metastore_uri)
         .enableHiveSupport()
     )
-    return configure_spark_with_delta_pip(builder).getOrCreate()
+    return configure_spark_with_delta_pip(
+        builder,
+        extra_packages=SPARK_PACKAGE_COORDS.split(","),
+    ).getOrCreate()
 
 
 def ensure_databases(spark: SparkSession) -> None:
@@ -207,4 +220,3 @@ def merge_with_retry(
             time.sleep(backoff_seconds * (attempt + 1))
     if last_error:
         raise last_error
-

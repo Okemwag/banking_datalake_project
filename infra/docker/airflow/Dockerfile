@@ -10,9 +10,13 @@ RUN apt-get update && apt-get install -y openjdk-17-jre-headless && rm -rf /var/
 USER airflow
 WORKDIR /opt/project
 COPY infra/docker/airflow/requirements.txt /tmp/requirements.txt
+COPY infra/docker/airflow/dbt-requirements.txt /tmp/dbt-requirements.txt
 RUN pip install --no-cache-dir --default-timeout=100 --constraint "${AIRFLOW_CONSTRAINTS_URL}" -r /tmp/requirements.txt
+RUN python -m venv /home/airflow/dbt-venv \
+    && /home/airflow/dbt-venv/bin/pip install --no-cache-dir --default-timeout=100 -r /tmp/dbt-requirements.txt
 COPY . /opt/project
 RUN pip install --no-cache-dir --no-deps -e /opt/project
 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV AIRFLOW__CORE__DAGS_FOLDER=/opt/project/orchestration/dags
+ENV PATH=/home/airflow/dbt-venv/bin:${PATH}
